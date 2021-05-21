@@ -7,12 +7,14 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private float speed;
     [SerializeField] private float lives;
     [SerializeField] private float jumpForse;
+    [SerializeField] private float dashForse = 3000f;
+    [SerializeField] private Vector2 moveVector;
     private Rigidbody2D rbPlayer;
     private SpriteRenderer spritePlayer;
-    public bool isReady = true;
-    public int doubleJump = 1;
+    private bool isReady = true;
+    private int doubleJump = 1;
     private bool isLeft = false;
-
+    private float velosity;
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -27,11 +29,47 @@ public class Player : MonoBehaviour, IMove
 
 
     }
+    void playerDash() {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rbPlayer.velocity = new Vector2(0, 0);
+
+            if (velosity == 0)
+            {
+                if (isLeft)
+                {
+
+                    rbPlayer.AddForce(Vector2.left * dashForse, ForceMode2D.Force);
+                }
+                else
+                {
+
+                    rbPlayer.AddForce(Vector2.right * dashForse, ForceMode2D.Force);
+                }
+            }
+            else
+            {
+                if (isLeft)
+                {
+
+                    rbPlayer.AddForce(Vector2.left * dashForse / 2, ForceMode2D.Force);
+                }
+                else
+                {
+
+                    rbPlayer.AddForce(Vector2.right * dashForse / 2, ForceMode2D.Force);
+                }
+            }
+        }
+
+
+    }
 
     void playerMove()
     {
-        float velosity = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * velosity * speed * Time.deltaTime);
+        velosity = Input.GetAxis("Horizontal");
+        transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
+
         if (isLeft)
         {
             spritePlayer.flipX = true;
@@ -50,6 +88,7 @@ public class Player : MonoBehaviour, IMove
 
         }
 
+
     }
     void playerJump() {
 
@@ -59,6 +98,7 @@ public class Player : MonoBehaviour, IMove
     public void Moving()
     {
         playerMove();
+
     }   
     
     private void FixedUpdate()
@@ -80,6 +120,8 @@ public class Player : MonoBehaviour, IMove
                 isReady = false;
             }
         }
+        playerDash();
+
     }
    
 }
