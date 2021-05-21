@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMove
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Moving()
     {
-        
+        print("јуе");
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Moving();
     }
 }
