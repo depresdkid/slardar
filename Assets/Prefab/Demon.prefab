@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3748973154480725729}
   - component: {fileID: 3748973154480725728}
-  - component: {fileID: 3748973154480725743}
-  - component: {fileID: 3748973154480725742}
   - component: {fileID: 3748973154480725741}
   - component: {fileID: 731876147362001443}
   - component: {fileID: -8885312965983621261}
+  - component: {fileID: 3751757410424718116}
   m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3748973154480725740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.8556, y: -1.1219, z: 0}
-  m_LocalScale: {x: 0.3381, y: 0.2423, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,48 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3748973154480725743
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748973154480725740}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.004970312, y: -0.019879356}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.29428053, y: 0.58253264}
-  m_EdgeRadius: 0
---- !u!58 &3748973154480725742
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748973154480725740}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.360314}
-  serializedVersion: 2
-  m_Radius: 0.13968599
 --- !u!50 &3748973154480725741
 Rigidbody2D:
   serializedVersion: 4
@@ -182,7 +139,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484371475658f7e4196f89d979424e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
+  _health: 10
   _speed: 1.5
   _moveDistans: 4
   _attackDistans: 0.5
+  gameObgectEnemy: {fileID: 3748973154480725740}
+--- !u!70 &3751757410424718116
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748973154480725740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.024208546, y: -0.11585364}
+  m_Size: {x: 0.39133644, y: 0.7682927}
+  m_Direction: 0

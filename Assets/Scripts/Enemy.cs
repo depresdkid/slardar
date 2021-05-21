@@ -5,15 +5,17 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float _health;
-    Animator animator;
+    protected Animator animator;
+    protected GameObject gameObgectEnemy;
+    bool isDead = false;
     //Свойство (жив или нет)
     protected bool IsAlive
     {
         get
         {
             if (_health > 0)
-            {
-                return true;
+            {                
+                return true;                
             }
             else
             {
@@ -24,9 +26,19 @@ public abstract class Enemy : MonoBehaviour
     protected abstract void Attack();
     public virtual void Start()
     {
+        gameObgectEnemy = gameObject;
         animator = GetComponent<Animator>();
     }
     protected void GetDamage(float damage) {
         _health -= damage;
+    }
+    private void Update()
+    {
+        //срабатывает анимация смерти в случае если hp меньше 0 или равны
+        if (!IsAlive && !isDead)
+        {
+            animator.SetTrigger("Die");
+            isDead = true;
+        }
     }
 }
