@@ -21,6 +21,7 @@ public abstract class Enemy : MonoBehaviour
             }
         }
     }
+    protected abstract void Attack();
     public virtual void Start()
     {
         animator = GetComponent<Animator>();
