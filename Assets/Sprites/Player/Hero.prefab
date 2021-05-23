@@ -157,6 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lives: 10
+<<<<<<< HEAD
   jumpForse: 55
+=======
+  jumpForse: 7
+>>>>>>> main
   dashForse: 3000
   moveVector: {x: 0, y: 0}
