@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private float jumpForse;
     [SerializeField] private float dashForse = 3000f;
     [SerializeField] private Vector2 moveVector;
+
     private Rigidbody2D rbPlayer;
     private SpriteRenderer spritePlayer;
     private bool isReady = true;
@@ -92,7 +93,8 @@ public class Player : MonoBehaviour, IMove
     }
     void playerJump() {
 
-        rbPlayer.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);
+        rbPlayer.velocity = new Vector2(0, 0);
+        rbPlayer.velocity = Vector2.up * jumpForse;
         
     }
     public void Moving()
