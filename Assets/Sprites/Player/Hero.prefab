@@ -156,7 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+<<<<<<< HEAD
   health: 10
+=======
+  lives: 10
+>>>>>>> 1c7d5e1c359c4b9879591ce24214cb80a9405fb1
   jumpForse: 7
   dashForse: 3000
   moveVector: {x: 0, y: 0}
