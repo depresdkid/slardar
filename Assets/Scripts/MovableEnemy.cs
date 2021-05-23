@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovableEnemy : Enemy,IMove
 {
-    [SerializeField] float _speed,_moveDistans, _attackDistans;    
+    [SerializeField] float _speed,_moveDistans, _attackDistans, _heightAgr;    
     Transform player;
     int IsLeft = -1;    
     SpriteRenderer SpriteRenderer;
@@ -17,21 +17,20 @@ public class MovableEnemy : Enemy,IMove
     }
     // метод движения
     public void Moving() {
-        //поворачивается в зависимости от расположения персонажа
-        if (transform.position.x < player.position.x)
-        {
-            IsLeft = 1;
-            SpriteRenderer.flipX = true;
-        }
-        else {
-            SpriteRenderer.flipX = false;
-            IsLeft = -1;
-        }        
+             
         transform.Translate(Vector2.right * _speed * Time.deltaTime * IsLeft);
         //анимации
         if (isRun == false)
         {
-            animator.SetTrigger("StartRunning");
+            try
+            {
+                animator.SetTrigger("StartRunning");
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
             animator.SetBool("IsRunning", true);
             isRun = true;
         }      
@@ -43,12 +42,27 @@ public class MovableEnemy : Enemy,IMove
     }
     protected override void Attack()
     {
-        print("Атака");
+        
+    }
+    void Fliping() {
+        //поворачивается в зависимости от расположения персонажа
+        if (transform.position.x < player.position.x)
+        {
+            IsLeft = 1;
+            SpriteRenderer.flipX = true;
+        }
+        else
+        {
+            SpriteRenderer.flipX = false;
+            IsLeft = -1;
+        }
     }
     private void FixedUpdate()
     {
+
         if (IsAlive)
         {
+            Fliping();
             //передвижение и анимации
             float distance = Vector2.Distance(transform.position, player.position);
             float enemyPosY = transform.position.y;
@@ -58,15 +72,24 @@ public class MovableEnemy : Enemy,IMove
             {
                 //animator.SetTrigger("EndRunning");
                 animator.SetBool("IsRunning", false);
+                try
+                {
+                    animator.SetBool("IsAttack", true);
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
                 isRun = false;
                 Attack();
-            }
+            }           
             //Проверка на вхождение в дистанцию бега
             else if (distance < _moveDistans)
             {
                 //Проверка на высоту
-                if (playerPosY > enemyPosY + 1 | playerPosY < enemyPosY - 1)
+                if (playerPosY > enemyPosY + _heightAgr | playerPosY < enemyPosY - _heightAgr)
                 {
+                    
                     animator.SetBool("IsRunning", false);
                     isRun = false;
                 }
@@ -75,9 +98,18 @@ public class MovableEnemy : Enemy,IMove
             }
             //проверка на выход за дистанцию
             else if (distance >= _attackDistans)
-            {
+            {                
                 animator.SetBool("IsRunning", false);
                 isRun = false;
+            }
+            if (distance >= _attackDistans) {
+                try
+                {
+                    animator.SetBool("IsAttack", false);
+                }
+                catch (System.Exception)
+                {
+                }
             }
 
         }
