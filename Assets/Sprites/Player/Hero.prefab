@@ -157,6 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lives: 10
-  jumpForse: 55
-  isReady: 1
-  doubleJump: 1
+  jumpForse: 7
+  dashForse: 3000
+  moveVector: {x: 0, y: 0}
