@@ -5,10 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour, IMove
 {
     [SerializeField] private float speed;
-    [SerializeField] private float lives;
+    [SerializeField] private float health;
     [SerializeField] private float jumpForse;
     [SerializeField] private float dashForse = 3000f;
     [SerializeField] private Vector2 moveVector;
+    [SerializeField] private float deshReload;
+
+    float timer = 0;    
+    Animator animator;
 
     private Rigidbody2D rbPlayer;
     private SpriteRenderer spritePlayer;
@@ -16,6 +20,13 @@ public class Player : MonoBehaviour, IMove
     private int doubleJump = 1;
     private bool isLeft = false;
     private float velosity;
+
+    float Health {
+        get {
+            return Mathf.Round(health);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -27,45 +38,46 @@ public class Player : MonoBehaviour, IMove
     {
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
-
+        animator = GetComponent<Animator>();
 
     }
     void playerDash() {
         if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
+        {            
             rbPlayer.velocity = new Vector2(0, 0);
 
             if (velosity == 0)
             {
                 if (isLeft)
                 {
-
-                    rbPlayer.AddForce(Vector2.left * dashForse, ForceMode2D.Force);
+                    animator.SetTrigger("Desh");
+                    rbPlayer.AddForce(Vector2.left * dashForse);
                 }
                 else
                 {
-
-                    rbPlayer.AddForce(Vector2.right * dashForse, ForceMode2D.Force);
+                    animator.SetTrigger("Desh");
+                    rbPlayer.AddForce(Vector2.right * dashForse);
                 }
+
             }
             else
             {
                 if (isLeft)
                 {
-
-                    rbPlayer.AddForce(Vector2.left * dashForse / 2, ForceMode2D.Force);
+                    animator.SetTrigger("Desh");
+                    rbPlayer.AddForce(Vector2.left * dashForse / 2);
                 }
                 else
                 {
-
-                    rbPlayer.AddForce(Vector2.right * dashForse / 2, ForceMode2D.Force);
+                    animator.SetTrigger("Desh");
+                    rbPlayer.AddForce(Vector2.right * dashForse / 2);
                 }
             }
+            timer = deshReload;
+
         }
 
-
     }
-
     void playerMove()
     {
         velosity = Input.GetAxis("Horizontal");
@@ -73,10 +85,10 @@ public class Player : MonoBehaviour, IMove
 
         if (isLeft)
         {
-            spritePlayer.flipX = true;
+            spritePlayer.flipX = false;
         }
         else {
-            spritePlayer.flipX = false;
+            spritePlayer.flipX = true;
         }
         if (velosity > 0)
         {
@@ -88,8 +100,13 @@ public class Player : MonoBehaviour, IMove
             isLeft = true;
 
         }
-
-
+        if (velosity!=0)
+        {
+            animator.SetBool("IsRunning",true);
+        }
+        else
+            animator.SetBool("IsRunning", false);
+        
     }
     void playerJump() {
 
@@ -100,12 +117,11 @@ public class Player : MonoBehaviour, IMove
     public void Moving()
     {
         playerMove();
-
+        
     }   
     
     private void FixedUpdate()
     {
-
         Moving();
     }
     private void Update()
@@ -122,8 +138,15 @@ public class Player : MonoBehaviour, IMove
                 isReady = false;
             }
         }
-        playerDash();
-
+        if (timer <= 0)
+        {
+            playerDash();
+        }
+        else {
+            timer -= Time.deltaTime;
+        }
+        UI.deshReload = (float)System.Math.Round(timer,1);
+        UI.playerHealth = System.Convert.ToInt32(Health); 
     }
-   
+
 }

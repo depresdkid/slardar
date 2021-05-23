@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 57bc5f2ff0e54544c941c89fa8813739, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -141,9 +141,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _speed: 1.5
-  _moveDistans: 4
+  _moveDistans: 5
   _attackDistans: 0.5
-  gameObgectEnemy: {fileID: 3748973154480725740}
+  _heightAgr: 1
 --- !u!70 &3751757410424718116
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
