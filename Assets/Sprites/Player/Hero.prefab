@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &2960819183361430207
 CapsuleCollider2D:
@@ -158,5 +158,5 @@ MonoBehaviour:
   speed: 5
   lives: 10
   jumpForse: 55
-  isReady: 1
-  doubleJump: 1
+  dashForse: 3000
+  moveVector: {x: 0, y: 0}
