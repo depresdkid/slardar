@@ -12,10 +12,11 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private float deshReload;
 
     float timer = 0;    
-    Animator animator;
+    //Animator animator;
 
     private Rigidbody2D rbPlayer;
     private SpriteRenderer spritePlayer;
+
     private bool isReady = true;
     private int doubleJump = 1;
     private bool isLeft = false;
@@ -30,15 +31,19 @@ public class Player : MonoBehaviour, IMove
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        isReady = true;
-        doubleJump = 1;
+        if (collision.gameObject.tag == "BotGround")
+        {
+            isReady = true;
+            doubleJump = 1;
+            print("На земле");
+        }
 
     }
     private void Awake()
     {
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
     }
     void playerDash() {
@@ -50,12 +55,12 @@ public class Player : MonoBehaviour, IMove
             {
                 if (isLeft)
                 {
-                    animator.SetTrigger("Desh");
+                    //animator.SetTrigger("Desh");
                     rbPlayer.AddForce(Vector2.left * dashForse);
                 }
                 else
                 {
-                    animator.SetTrigger("Desh");
+                    //animator.SetTrigger("Desh");
                     rbPlayer.AddForce(Vector2.right * dashForse);
                 }
 
@@ -64,12 +69,12 @@ public class Player : MonoBehaviour, IMove
             {
                 if (isLeft)
                 {
-                    animator.SetTrigger("Desh");
+                    //animator.SetTrigger("Desh");
                     rbPlayer.AddForce(Vector2.left * dashForse / 2);
                 }
                 else
                 {
-                    animator.SetTrigger("Desh");
+                    //animator.SetTrigger("Desh");
                     rbPlayer.AddForce(Vector2.right * dashForse / 2);
                 }
             }
@@ -102,10 +107,10 @@ public class Player : MonoBehaviour, IMove
         }
         if (velosity!=0)
         {
-            animator.SetBool("IsRunning",true);
+           // animator.SetBool("IsRunning",true);
         }
-        else
-            animator.SetBool("IsRunning", false);
+        //else
+           // animator.SetBool("IsRunning", false);
         
     }
     void playerJump() {
