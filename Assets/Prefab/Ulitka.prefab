@@ -136,11 +136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484371475658f7e4196f89d979424e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioRun: {fileID: 0}
+  _audioHit: {fileID: 0}
   _health: 3
   _speed: 0.8
   _moveDistans: 5
   _attackDistans: 2
   _heightAgr: 1
+  _damage: 1
 --- !u!95 &5685160199890368334
 Animator:
   serializedVersion: 3
