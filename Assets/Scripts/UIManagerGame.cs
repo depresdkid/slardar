@@ -12,7 +12,14 @@ public class UIManagerGame : MonoBehaviour
     {
         try
         {
-            health.text = $"Health = {UI.playerHealth}";
+            // обновляет hp
+            if (Player.player.isAlive)
+            {
+                health.text = $"Health = {UI.playerHealth}";
+            }
+            else
+                health.text = $"Вы погибли";
+            //обновляет дэш
             if (UI.deshReload <= 0)
             {
                 deshReload.fontSize = 28;

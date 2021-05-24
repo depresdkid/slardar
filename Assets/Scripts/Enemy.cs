@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] protected AudioSource _audioRun,_audioHit;
     [SerializeField] protected float _health;
+    [SerializeField] protected int _damage;
     protected Animator animator;
     protected GameObject gameObgectEnemy;
     bool isDead = false;

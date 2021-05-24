@@ -406,6 +406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Root1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8880179492646321460, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
 --- !u!1001 &136129821
@@ -418,6 +422,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: BlockGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -703,7 +711,7 @@ GameObject:
   - component: {fileID: 199440032}
   m_Layer: 0
   m_Name: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430_22 (2)"
-  m_TagString: Untagged
+  m_TagString: BotGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1148,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Grass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1384,6 +1396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockBlueRock
       objectReference: {fileID: 0}
+    - target: {fileID: 2968395108862056500, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 4900385935481942915, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1440,6 +1456,10 @@ PrefabInstance:
     - target: {fileID: 6617775069415666624, guid: ba521a2ac9aedda44a7071204362dc49, type: 3}
       propertyPath: m_Name
       value: CornerGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617775069415666624, guid: ba521a2ac9aedda44a7071204362dc49, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 8963914392644800680, guid: ba521a2ac9aedda44a7071204362dc49, type: 3}
       propertyPath: m_RootOrder
@@ -1728,6 +1748,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb0a9b98a9696984fb11352611aef9c0, type: 3}
+--- !u!1001 &550437085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 620.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 827817971082195284, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478405686730864995, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
+      propertyPath: m_Name
+      value: Hero
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a28c31fd4d6e8e04ab70d237a77c8d60, type: 3}
 --- !u!1 &553415964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9182019636695221118, guid: a96643e0c7911104f839342a5e20b89e, type: 3}
@@ -1782,7 +1859,7 @@ GameObject:
   - component: {fileID: 567925346}
   m_Layer: 0
   m_Name: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430_17"
-  m_TagString: Untagged
+  m_TagString: BotGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2261,6 +2338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1842123848176632561, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 2095218054062334817, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -2287,6 +2368,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: BlockGrass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -2575,7 +2660,7 @@ GameObject:
   - component: {fileID: 838732516}
   m_Layer: 0
   m_Name: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430_22 (2)"
-  m_TagString: Untagged
+  m_TagString: BotGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2682,6 +2767,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: BlockGrass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -2800,6 +2889,10 @@ PrefabInstance:
     - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
       propertyPath: m_Name
       value: BlockReverceRoot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
@@ -3016,6 +3109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1842123848176632561, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
 --- !u!4 &969152046 stripped
@@ -3105,7 +3202,7 @@ GameObject:
   - component: {fileID: 1002247341}
   m_Layer: 0
   m_Name: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430_22 (1)"
-  m_TagString: Untagged
+  m_TagString: BotGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3486,6 +3583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Grass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3554,6 +3655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170216817}
   - component: {fileID: 1170216816}
+  - component: {fileID: 1170216818}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3589,6 +3691,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1170216818
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170216815}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3c9fc8c31e70556419c21d9f7d1c8274, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.204
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1174076219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3599,6 +3797,10 @@ PrefabInstance:
     - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Name
       value: BlockRootBig (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 373297287872806520, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Offset.y
@@ -3710,6 +3912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3770,6 +3976,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: BlockGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -3932,6 +4142,10 @@ PrefabInstance:
     - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
       propertyPath: m_Name
       value: BlockReverceRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
@@ -4101,6 +4315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 4814519840365374973, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Size.y
       value: 0.5337118
@@ -4265,6 +4483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockBlueRock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2968395108862056500, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 4900385935481942915, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -4330,6 +4552,10 @@ PrefabInstance:
     - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Name
       value: BlockRootBig
+      objectReference: {fileID: 0}
+    - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 5915880847650091841, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_RootOrder
@@ -4677,6 +4903,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: Block_Grass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -5219,6 +5449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CornerGrass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6617775069415666624, guid: ba521a2ac9aedda44a7071204362dc49, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 8963914392644800680, guid: ba521a2ac9aedda44a7071204362dc49, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5453,6 +5687,10 @@ PrefabInstance:
     - target: {fileID: 8880179492646321460, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
       propertyPath: m_Name
       value: BlockRoot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880179492646321460, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
@@ -5805,6 +6043,10 @@ PrefabInstance:
     - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Name
       value: BlockRootBig
+      objectReference: {fileID: 0}
+    - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 5915880847650091841, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_RootOrder
@@ -6240,6 +6482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blockroot2
       objectReference: {fileID: 0}
+    - target: {fileID: 9182019636695221118, guid: a96643e0c7911104f839342a5e20b89e, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a96643e0c7911104f839342a5e20b89e, type: 3}
 --- !u!1001 &848490642314778644
@@ -6252,6 +6498,10 @@ PrefabInstance:
     - target: {fileID: 683585838635162614, guid: abfaf810036e66c42a1b15f403b7b982, type: 3}
       propertyPath: m_Name
       value: CornerRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 683585838635162614, guid: abfaf810036e66c42a1b15f403b7b982, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 2212119729587122580, guid: abfaf810036e66c42a1b15f403b7b982, type: 3}
       propertyPath: m_RootOrder
@@ -6370,6 +6620,10 @@ PrefabInstance:
     - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
       propertyPath: m_Name
       value: BlockReverceRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075397283788607876, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2507acf992ebbab449316eba99ba65f0, type: 3}
@@ -6522,6 +6776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock
       objectReference: {fileID: 0}
+    - target: {fileID: 1842123848176632561, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7068313a5415bb44a047bbfd0447a13, type: 3}
 --- !u!4 &1430081718008324998 stripped
@@ -6539,6 +6797,10 @@ PrefabInstance:
     - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Name
       value: Block_Root_Big
+      objectReference: {fileID: 0}
+    - target: {fileID: 165539532505219758, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 373297287872806520, guid: 8fd5bd8305026184a9e670aa27702c3a, type: 3}
       propertyPath: m_Size.y
@@ -6617,6 +6879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockBlueRock
       objectReference: {fileID: 0}
+    - target: {fileID: 2968395108862056500, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     - target: {fileID: 4900385935481942915, guid: a9f3adef0d203ee4187d1316a2717605, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6677,6 +6943,10 @@ PrefabInstance:
     - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_Name
       value: Block_Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702832821350670137, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 6907039978173888216, guid: 137548112bc0b8b4191cd4cfeb133ed7, type: 3}
       propertyPath: m_RootOrder
@@ -6807,6 +7077,10 @@ PrefabInstance:
     - target: {fileID: 312210003398785407, guid: 4c0ff654d8cf41247854e6a567dc57d8, type: 3}
       propertyPath: m_Name
       value: BlockRootLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 312210003398785407, guid: 4c0ff654d8cf41247854e6a567dc57d8, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 3710633497270351720, guid: 4c0ff654d8cf41247854e6a567dc57d8, type: 3}
       propertyPath: m_RootOrder
@@ -6986,6 +7260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Root1
       objectReference: {fileID: 0}
+    - target: {fileID: 8880179492646321460, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dcb5314e5546c49be4be9fe0023067, type: 3}
 --- !u!1001 &7016536889219261891
@@ -6998,6 +7276,10 @@ PrefabInstance:
     - target: {fileID: 4976442302929190171, guid: 252714eb0340d4b44bc9d376ce665a50, type: 3}
       propertyPath: m_Name
       value: LittleTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976442302929190171, guid: 252714eb0340d4b44bc9d376ce665a50, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 8953716272318658759, guid: 252714eb0340d4b44bc9d376ce665a50, type: 3}
       propertyPath: m_RootOrder
@@ -7071,6 +7353,10 @@ PrefabInstance:
     - target: {fileID: 2901148188750088419, guid: 0de0234edfe9b3b48ba7796517bcf5fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901148188750088419, guid: 0de0234edfe9b3b48ba7796517bcf5fe, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     - target: {fileID: 3309864170776846916, guid: 0de0234edfe9b3b48ba7796517bcf5fe, type: 3}
       propertyPath: m_RootOrder
@@ -7188,6 +7474,10 @@ PrefabInstance:
     - target: {fileID: 7928977715553309647, guid: fd0d980021a7c9b4b812cafb1c885ab0, type: 3}
       propertyPath: m_Name
       value: CornerRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928977715553309647, guid: fd0d980021a7c9b4b812cafb1c885ab0, type: 3}
+      propertyPath: m_TagString
+      value: BotGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0d980021a7c9b4b812cafb1c885ab0, type: 3}

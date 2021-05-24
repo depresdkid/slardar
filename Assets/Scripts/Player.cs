@@ -13,7 +13,16 @@ public class Player : MonoBehaviour, IMove
 
     float timer = 0;    
     //Animator animator;
-
+    public bool isAlive {
+        get {
+            if (health > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+    }
     private Rigidbody2D rbPlayer;
     private SpriteRenderer spritePlayer;
 
@@ -21,7 +30,7 @@ public class Player : MonoBehaviour, IMove
     private int doubleJump = 1;
     private bool isLeft = false;
     private float velosity;
-
+    public static Player player;
     float Health {
         get {
             return Mathf.Round(health);
@@ -39,8 +48,13 @@ public class Player : MonoBehaviour, IMove
         }
 
     }
+    //получить урон
+    public void GetDamage(int damage) {
+        health -= damage;
+    }
     private void Awake()
     {
+        player = this;
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
         //animator = GetComponent<Animator>();
@@ -127,31 +141,41 @@ public class Player : MonoBehaviour, IMove
     
     private void FixedUpdate()
     {
-        Moving();
+        //если песнонаж умер он не двигается
+        if (isAlive)
+        {
+            Moving();
+        }
+        
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isReady)
+        if (isAlive)
         {
-            playerJump();
-            doubleJump++;
-            if (doubleJump < 3)
+            if (Input.GetKeyDown(KeyCode.Space) && isReady)
             {
-                isReady = true;
+                playerJump();
+                doubleJump++;
+                if (doubleJump < 3)
+                {
+                    isReady = true;
+                }
+                else
+                {
+                    isReady = false;
+                }
             }
-            else {
-                isReady = false;
+            if (timer <= 0)
+            {
+                playerDash();
             }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+            UI.deshReload = (float)System.Math.Round(timer, 1);
+            UI.playerHealth = System.Convert.ToInt32(Health);
         }
-        if (timer <= 0)
-        {
-            playerDash();
-        }
-        else {
-            timer -= Time.deltaTime;
-        }
-        UI.deshReload = (float)System.Math.Round(timer,1);
-        UI.playerHealth = System.Convert.ToInt32(Health); 
     }
 
 }
