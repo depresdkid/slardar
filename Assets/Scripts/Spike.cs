@@ -6,6 +6,7 @@ public class Spike : MonoBehaviour, IArounds
 {
     [SerializeField] int damage;
     [SerializeField] float reloadTime;
+    public AudioSource audio;
     Animator animator;
     float timer = 0;
     bool isAttack = false;
@@ -19,20 +20,22 @@ public class Spike : MonoBehaviour, IArounds
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print("Стою");
-        if (collision.gameObject.tag == "Player" && !isAttack)
+
+        if (collision.gameObject.tag == "Player" && !isAttack && Player.player.isAlive)
         {
-            isAttack = true;
-            animator.SetTrigger("IsDamage");
+            animator.SetBool("IsAttack", true);            
+            audio.Play();
             AroundsActions();
             timer = reloadTime;
+            
+            isAttack = true;
         }
     }
     private void Update()
     {
-        print(isAttack);
         if (timer <= 0)
         {
+            animator.SetBool("IsAttack", false);
             isAttack = false;            
         }
         else
