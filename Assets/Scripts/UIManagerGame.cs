@@ -5,20 +5,12 @@ using UnityEngine.UI;
 
 public class UIManagerGame : MonoBehaviour
 {
-    public Text health;
     public Text deshReload;
 
     void Update()
     {
         try
         {
-            // обновляет hp
-            if (Player.player.isAlive)
-            {
-                health.text = $"Health = {UI.playerHealth}";
-            }
-            else
-                health.text = $"Вы погибли";
             //обновляет дэш
             if (UI.deshReload <= 0)
             {

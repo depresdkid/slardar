@@ -7,6 +7,7 @@ public class HealFlover : MonoBehaviour, IArounds
     [SerializeField] float heal;
     GameObject _gameObject;
     Animator animator;
+    public AudioSource audio;
     bool isHeal = false;
     private void Awake()
     {
@@ -31,8 +32,8 @@ public class HealFlover : MonoBehaviour, IArounds
     {
         if (collision.gameObject.tag == "Player" && !isHeal)
         {
-            
-            Invoke("End",1f);
+            audio.Play();
+            Invoke("End",2.5f);
             animator.SetTrigger("IsHeal");
             isHeal = true;
             AroundsActions();    
