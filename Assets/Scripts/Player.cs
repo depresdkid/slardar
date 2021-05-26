@@ -46,9 +46,12 @@ public class Player : MonoBehaviour, IMove
                 return false;
         }
     }
-    float Health {
+    public float Health {
         get {
             return Mathf.Round(health);
+        }
+        set {
+            health = value;
         }
     }
 
@@ -168,6 +171,7 @@ public class Player : MonoBehaviour, IMove
     }
     private void Update()
     {
+        
         if (isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isReady)
