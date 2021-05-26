@@ -13,29 +13,37 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
     [SerializeField] private Slider sliderHealth;
-    private Rigidbody2D rbPlayer;
-    private SpriteRenderer spritePlayer;
 
-    private bool isReady = true;
-    private int doubleJump = 1;
-    private bool isLeft = false;
-    private float velosity;
     public static Player player;
-
+    public bool isReady = true;
+    public int doubleJump = 1;
     public float timer = 0;
 
 
+    private Rigidbody2D rbPlayer;
+    private SpriteRenderer spritePlayer;
+
+
+    private bool isLeft = false;
+    private float velosity;
+
+
+    //Animator animator;
+
+    //получаем максимальное кол-во хп для health bar
     public void SetMaxHealth(float health)
     {
         sliderHealth.maxValue = health;
         sliderHealth.value = health;
     }
+
+    //получаем текущее кол-во хп для health bar
     public void SetHealth(float health)
     {
         sliderHealth.value = health;
     }
 
-    //Animator animator;
+    //персонаж живой
     public bool isAlive {
         get {
             if (health > 0)
@@ -46,23 +54,14 @@ public class Player : MonoBehaviour, IMove
                 return false;
         }
     }
+    //твоя хуйня макс понятия не имею что она делает
+    //не ебёт реально B)
     float Health {
         get {
             return Mathf.Round(health);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.tag == "BotGround")
-        {
-            isReady = true;
-            doubleJump = 1;
-            print("На земле");
-        }
-
-    }
     //получить урон
     public void GetDamage(int damage) {
         health -= damage;
@@ -75,48 +74,50 @@ public class Player : MonoBehaviour, IMove
         //animator = GetComponent<Animator>();
 
     }
+
+    //рывок
     void PlayerDash() {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {            
-            rbPlayer.velocity = new Vector2(0, 0);
+        //обновляем вектор чтоб не складывать скорости
+        // кстати он не работает :D (или работает но не так как надо)
+        rbPlayer.velocity = new Vector2(0, 0);
 
-            if (velosity == 0)
+        //проверка для деша в стоячем состоянии и при движении
+        if (velosity == 0)
+        {
+            if (isLeft)
             {
-                if (isLeft)
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.left * dashForse);
-                }
-                else
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.right * dashForse);
-                }
-
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.left * dashForse);
             }
             else
             {
-                if (isLeft)
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.left * dashForse / 2);
-                }
-                else
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.right * dashForse / 2);
-                }
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.right * dashForse);
             }
-            timer = deshReload;
 
+            }
+        else
+        {
+            if (isLeft)
+            {
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.left * dashForse / 2);
+            }
+            else
+            {
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.right * dashForse / 2);
+            }
         }
+        timer = deshReload;
 
     }
+    //движение игрока
     void PlayerMove()
     {
         velosity = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
-
+        //поворот спарйта 
         if (isLeft)
         {
             spritePlayer.flipX = false;
@@ -142,17 +143,22 @@ public class Player : MonoBehaviour, IMove
            // animator.SetBool("IsRunning", false);
         
     }
+
+    //прыжок
     void PlayerJump() {
 
         rbPlayer.velocity = new Vector2(0, 0);
         rbPlayer.velocity = Vector2.up * jumpForse;
         
     }
+    //реализация интерфейса
     public void Moving()
     {
         PlayerMove();
         
     }
+
+    //обновляем максимальное значение для слайдера healt bar вызовом метода
     private void Start()
     {
         SetMaxHealth(maxHealth);
@@ -185,16 +191,19 @@ public class Player : MonoBehaviour, IMove
             }
             if (timer <= 0)
             {
-                PlayerDash();
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                    PlayerDash();
             }
             else
             {
                 timer -= Time.deltaTime;
             }
-            SetHealth(health);
+
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
+        //обновляем текущее хп
+        SetHealth(health);
     }
 
 }
