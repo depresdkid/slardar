@@ -13,29 +13,37 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
     [SerializeField] private Slider sliderHealth;
-    private Rigidbody2D rbPlayer;
-    private SpriteRenderer spritePlayer;
 
-    private bool isReady = true;
-    private int doubleJump = 1;
-    private bool isLeft = false;
-    private float velosity;
     public static Player player;
-
+    public bool isReady = true;
+    public int doubleJump = 1;
     public float timer = 0;
 
 
+    private Rigidbody2D rbPlayer;
+    private SpriteRenderer spritePlayer;
+
+
+    private bool isLeft = false;
+    private float velosity;
+
+
+    //Animator animator;
+
+    //ïîëó÷àåì ìàêñèìàëüíîå êîë-âî õï äëÿ health bar
     public void SetMaxHealth(float health)
     {
         sliderHealth.maxValue = health;
         sliderHealth.value = health;
     }
+
+    //ïîëó÷àåì òåêóùåå êîë-âî õï äëÿ health bar
     public void SetHealth(float health)
     {
         sliderHealth.value = health;
     }
 
-    //Animator animator;
+    //ïåðñîíàæ æèâîé
     public bool isAlive {
         get {
             if (health > 0)
@@ -47,6 +55,8 @@ public class Player : MonoBehaviour, IMove
         }
     }
     public float Health {
+    //òâîÿ õóéíÿ ìàêñ ïîíÿòèÿ íå èìåþ ÷òî îíà äåëàåò
+    //íå åá¸ò ðåàëüíî B)
         get {
             return Mathf.Round(health);
         }
@@ -55,18 +65,7 @@ public class Player : MonoBehaviour, IMove
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.tag == "BotGround")
-        {
-            isReady = true;
-            doubleJump = 1;
-            print("�� �����");
-        }
-
-    }
-    //�������� ����
+    //ïîëó÷èòü óðîí
     public void GetDamage(int damage) {
         health -= damage;
     }
@@ -78,48 +77,50 @@ public class Player : MonoBehaviour, IMove
         //animator = GetComponent<Animator>();
 
     }
+
+    //ðûâîê
     void PlayerDash() {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {            
-            rbPlayer.velocity = new Vector2(0, 0);
+        //îáíîâëÿåì âåêòîð ÷òîá íå ñêëàäûâàòü ñêîðîñòè
+        // êñòàòè îí íå ðàáîòàåò :D (èëè ðàáîòàåò íî íå òàê êàê íàäî)
+        rbPlayer.velocity = new Vector2(0, 0);
 
-            if (velosity == 0)
+        //ïðîâåðêà äëÿ äåøà â ñòîÿ÷åì ñîñòîÿíèè è ïðè äâèæåíèè
+        if (velosity == 0)
+        {
+            if (isLeft)
             {
-                if (isLeft)
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.left * dashForse);
-                }
-                else
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.right * dashForse);
-                }
-
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.left * dashForse);
             }
             else
             {
-                if (isLeft)
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.left * dashForse / 2);
-                }
-                else
-                {
-                    //animator.SetTrigger("Desh");
-                    rbPlayer.AddForce(Vector2.right * dashForse / 2);
-                }
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.right * dashForse);
             }
-            timer = deshReload;
 
+            }
+        else
+        {
+            if (isLeft)
+            {
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.left * dashForse / 2);
+            }
+            else
+            {
+                //animator.SetTrigger("Desh");
+                rbPlayer.AddForce(Vector2.right * dashForse / 2);
+            }
         }
+        timer = deshReload;
 
     }
+    //äâèæåíèå èãðîêà
     void PlayerMove()
     {
         velosity = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
-
+        //ïîâîðîò ñïàðéòà 
         if (isLeft)
         {
             spritePlayer.flipX = false;
@@ -145,24 +146,29 @@ public class Player : MonoBehaviour, IMove
            // animator.SetBool("IsRunning", false);
         
     }
+
+    //ïðûæîê
     void PlayerJump() {
 
         rbPlayer.velocity = new Vector2(0, 0);
         rbPlayer.velocity = Vector2.up * jumpForse;
         
     }
+    //ðåàëèçàöèÿ èíòåðôåéñà
     public void Moving()
     {
         PlayerMove();
         
     }
+
+    //îáíîâëÿåì ìàêñèìàëüíîå çíà÷åíèå äëÿ ñëàéäåðà healt bar âûçîâîì ìåòîäà
     private void Start()
     {
         SetMaxHealth(maxHealth);
     }
     private void FixedUpdate()
     {
-        //���� �������� ���� �� �� ���������
+        //åñëè ïåñíîíàæ óìåð îí íå äâèãàåòñÿ
         if (isAlive)
         {
             Moving();
@@ -189,16 +195,19 @@ public class Player : MonoBehaviour, IMove
             }
             if (timer <= 0)
             {
-                PlayerDash();
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                    PlayerDash();
             }
             else
             {
                 timer -= Time.deltaTime;
             }
-            SetHealth(health);
+
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
+        //îáíîâëÿåì òåêóùåå õï
+        SetHealth(health);
     }
 
 }
