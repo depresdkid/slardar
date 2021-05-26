@@ -1,17 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IMove
 {
     [SerializeField] private float speed;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float health;
     [SerializeField] private float jumpForse;
     [SerializeField] private float dashForse = 3000f;
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
+    [SerializeField] private Slider sliderHealth;
+    private Rigidbody2D rbPlayer;
+    private SpriteRenderer spritePlayer;
 
-    float timer = 0;    
+    private bool isReady = true;
+    private int doubleJump = 1;
+    private bool isLeft = false;
+    private float velosity;
+    public static Player player;
+
+    public float timer = 0;
+
+
+    public void SetMaxHealth(float health)
+    {
+        sliderHealth.maxValue = health;
+        sliderHealth.value = health;
+    }
+    public void SetHealth(float health)
+    {
+        sliderHealth.value = health;
+    }
+
     //Animator animator;
     public bool isAlive {
         get {
@@ -23,14 +46,6 @@ public class Player : MonoBehaviour, IMove
                 return false;
         }
     }
-    private Rigidbody2D rbPlayer;
-    private SpriteRenderer spritePlayer;
-
-    private bool isReady = true;
-    private int doubleJump = 1;
-    private bool isLeft = false;
-    private float velosity;
-    public static Player player;
     float Health {
         get {
             return Mathf.Round(health);
@@ -60,7 +75,7 @@ public class Player : MonoBehaviour, IMove
         //animator = GetComponent<Animator>();
 
     }
-    void playerDash() {
+    void PlayerDash() {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {            
             rbPlayer.velocity = new Vector2(0, 0);
@@ -97,7 +112,7 @@ public class Player : MonoBehaviour, IMove
         }
 
     }
-    void playerMove()
+    void PlayerMove()
     {
         velosity = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
@@ -127,7 +142,7 @@ public class Player : MonoBehaviour, IMove
            // animator.SetBool("IsRunning", false);
         
     }
-    void playerJump() {
+    void PlayerJump() {
 
         rbPlayer.velocity = new Vector2(0, 0);
         rbPlayer.velocity = Vector2.up * jumpForse;
@@ -135,10 +150,13 @@ public class Player : MonoBehaviour, IMove
     }
     public void Moving()
     {
-        playerMove();
+        PlayerMove();
         
-    }   
-    
+    }
+    private void Start()
+    {
+        SetMaxHealth(maxHealth);
+    }
     private void FixedUpdate()
     {
         //если песнонаж умер он не двигается
@@ -154,7 +172,7 @@ public class Player : MonoBehaviour, IMove
         {
             if (Input.GetKeyDown(KeyCode.Space) && isReady)
             {
-                playerJump();
+                PlayerJump();
                 doubleJump++;
                 if (doubleJump < 3)
                 {
@@ -167,12 +185,13 @@ public class Player : MonoBehaviour, IMove
             }
             if (timer <= 0)
             {
-                playerDash();
+                PlayerDash();
             }
             else
             {
                 timer -= Time.deltaTime;
             }
+            SetHealth(health);
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
