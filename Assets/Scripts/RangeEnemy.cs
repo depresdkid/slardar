@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeEnemy : Enemy
+public class RangeEnemy : MonoBehaviour
 {
-    protected override void Attack()
+    public AudioSource audio;
+    public GameObject bullet;
+    public void AttackRange()
     {
-        print("Атака");
+        if (Player.player.isAlive)
+        {
+            audio.Play();            
+        }
     }
+
 }

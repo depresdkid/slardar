@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class MovableEnemy : Enemy,IMove
 {
-    [SerializeField] float _speed,_moveDistans, _attackDistans, _heightAgr;    
+    [SerializeField] float _speed,_moveDistans, _attackDistans, _heightAgr;
     Transform player;
-    int IsLeft = -1,randomChance = 1;    
     SpriteRenderer SpriteRenderer;
+    int IsLeft = -1,randomChance = 1;        
     bool isRun = false, isAgr = false;
     float random;
     public override void Start()
     {
         random = Random.Range(1, 10);
-        print(random);
         SpriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
@@ -75,8 +74,7 @@ public class MovableEnemy : Enemy,IMove
             _audioHit.Play();
             Player.player.GetDamage(_damage);
         }
-
-    }
+    }    
     void Fliping() {
         //поворачивается в зависимости от расположения персонажа
         if (transform.position.x < player.position.x)
