@@ -30,20 +30,20 @@ public class Player : MonoBehaviour, IMove
 
     //Animator animator;
 
-    //получаем максимальное кол-во хп для health bar
+    //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ ГЄГ®Г«-ГўГ® ГµГЇ Г¤Г«Гї health bar
     public void SetMaxHealth(float health)
     {
         sliderHealth.maxValue = health;
         sliderHealth.value = health;
     }
 
-    //получаем текущее кол-во хп для health bar
+    //ГЇГ®Г«ГіГ·Г ГҐГ¬ ГІГҐГЄГіГ№ГҐГҐ ГЄГ®Г«-ГўГ® ГµГЇ Г¤Г«Гї health bar
     public void SetHealth(float health)
     {
         sliderHealth.value = health;
     }
 
-    //персонаж живой
+    //ГЇГҐГ°Г±Г®Г­Г Г¦ Г¦ГЁГўГ®Г©
     public bool isAlive {
         get {
             if (health > 0)
@@ -54,15 +54,18 @@ public class Player : MonoBehaviour, IMove
                 return false;
         }
     }
-    //твоя хуйня макс понятия не имею что она делает
-    //не ебёт реально B)
-    float Health {
+    public float Health {
+    //ГІГўГ®Гї ГµГіГ©Г­Гї Г¬Г ГЄГ± ГЇГ®Г­ГїГІГЁГї Г­ГҐ ГЁГ¬ГҐГѕ Г·ГІГ® Г®Г­Г  Г¤ГҐГ«Г ГҐГІ
+    //Г­ГҐ ГҐГЎВёГІ Г°ГҐГ Г«ГјГ­Г® B)
         get {
             return Mathf.Round(health);
         }
+        set {
+            health = value;
+        }
     }
 
-    //получить урон
+    //ГЇГ®Г«ГіГ·ГЁГІГј ГіГ°Г®Г­
     public void GetDamage(int damage) {
         health -= damage;
     }
@@ -75,13 +78,13 @@ public class Player : MonoBehaviour, IMove
 
     }
 
-    //рывок
+    //Г°Г»ГўГ®ГЄ
     void PlayerDash() {
-        //обновляем вектор чтоб не складывать скорости
-        // кстати он не работает :D (или работает но не так как надо)
+        //Г®ГЎГ­Г®ГўГ«ГїГҐГ¬ ГўГҐГЄГІГ®Г° Г·ГІГ®ГЎ Г­ГҐ Г±ГЄГ«Г Г¤Г»ГўГ ГІГј Г±ГЄГ®Г°Г®Г±ГІГЁ
+        // ГЄГ±ГІГ ГІГЁ Г®Г­ Г­ГҐ Г°Г ГЎГ®ГІГ ГҐГІ :D (ГЁГ«ГЁ Г°Г ГЎГ®ГІГ ГҐГІ Г­Г® Г­ГҐ ГІГ ГЄ ГЄГ ГЄ Г­Г Г¤Г®)
         rbPlayer.velocity = new Vector2(0, 0);
 
-        //проверка для деша в стоячем состоянии и при движении
+        //ГЇГ°Г®ГўГҐГ°ГЄГ  Г¤Г«Гї Г¤ГҐГёГ  Гў Г±ГІГ®ГїГ·ГҐГ¬ Г±Г®Г±ГІГ®ГїГ­ГЁГЁ ГЁ ГЇГ°ГЁ Г¤ГўГЁГ¦ГҐГ­ГЁГЁ
         if (velosity == 0)
         {
             if (isLeft)
@@ -112,12 +115,12 @@ public class Player : MonoBehaviour, IMove
         timer = deshReload;
 
     }
-    //движение игрока
+    //Г¤ГўГЁГ¦ГҐГ­ГЁГҐ ГЁГЈГ°Г®ГЄГ 
     void PlayerMove()
     {
         velosity = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
-        //поворот спарйта 
+        //ГЇГ®ГўГ®Г°Г®ГІ Г±ГЇГ Г°Г©ГІГ  
         if (isLeft)
         {
             spritePlayer.flipX = false;
@@ -144,28 +147,28 @@ public class Player : MonoBehaviour, IMove
         
     }
 
-    //прыжок
+    //ГЇГ°Г»Г¦Г®ГЄ
     void PlayerJump() {
 
         rbPlayer.velocity = new Vector2(0, 0);
         rbPlayer.velocity = Vector2.up * jumpForse;
         
     }
-    //реализация интерфейса
+    //Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГЁГ­ГІГҐГ°ГґГҐГ©Г±Г 
     public void Moving()
     {
         PlayerMove();
         
     }
 
-    //обновляем максимальное значение для слайдера healt bar вызовом метода
+    //Г®ГЎГ­Г®ГўГ«ГїГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г¤Г«Гї Г±Г«Г Г©Г¤ГҐГ°Г  healt bar ГўГ»Г§Г®ГўГ®Г¬ Г¬ГҐГІГ®Г¤Г 
     private void Start()
     {
         SetMaxHealth(maxHealth);
     }
     private void FixedUpdate()
     {
-        //если песнонаж умер он не двигается
+        //ГҐГ±Г«ГЁ ГЇГҐГ±Г­Г®Г­Г Г¦ ГіГ¬ГҐГ° Г®Г­ Г­ГҐ Г¤ГўГЁГЈГ ГҐГІГ±Гї
         if (isAlive)
         {
             Moving();
@@ -174,6 +177,7 @@ public class Player : MonoBehaviour, IMove
     }
     private void Update()
     {
+        
         if (isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isReady)
@@ -202,7 +206,7 @@ public class Player : MonoBehaviour, IMove
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
-        //обновляем текущее хп
+        //Г®ГЎГ­Г®ГўГ«ГїГҐГ¬ ГІГҐГЄГіГ№ГҐГҐ ГµГЇ
         SetHealth(health);
     }
 

@@ -5,23 +5,30 @@ using UnityEngine;
 public class MovableEnemy : Enemy,IMove
 {
     [SerializeField] float _speed,_moveDistans, _attackDistans, _heightAgr;
-    
     Transform player;
-    int IsLeft = -1;    
     SpriteRenderer SpriteRenderer;
+    int IsLeft = -1,randomChance = 1;        
     bool isRun = false, isAgr = false;
-    
+    float random;
     public override void Start()
-    {        
+    {
+        random = Random.Range(1, 10);
         SpriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
+        
     }
-    
-    // метод движения
+
+    // метод движения FF0000
     public void Moving() {
-             
-        transform.Translate(Vector2.right * _speed * Time.deltaTime * IsLeft);
+        if (random <= randomChance)
+        {
+            SpriteRenderer.color = new Color32(255, 0, 0, 255);
+            _speed = 4;
+            _moveDistans = 8;
+            _damage = 5;
+        }
+        transform.Translate(Vector2.right * _speed  * Time.deltaTime * IsLeft);
         //анимации
         if (isRun == false)
         {
@@ -31,7 +38,12 @@ public class MovableEnemy : Enemy,IMove
                 {
                     if (!isAgr)
                     {
-                        _audioRun.Play();
+                        if (random > randomChance)
+                        {
+                            _audioRun.Play();
+                        }
+                        else
+                            _audioScrimer.Play();
                         isAgr = true;
                     }
                 }
@@ -62,8 +74,7 @@ public class MovableEnemy : Enemy,IMove
             _audioHit.Play();
             Player.player.GetDamage(_damage);
         }
-
-    }
+    }    
     void Fliping() {
         //поворачивается в зависимости от расположения персонажа
         if (transform.position.x < player.position.x)

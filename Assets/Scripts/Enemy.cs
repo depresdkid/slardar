@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected AudioSource _audioRun,_audioHit;
+    [SerializeField] protected AudioSource _audioRun,_audioHit, _audioScrimer;
     [SerializeField] protected float _health;
     [SerializeField] protected int _damage;
     protected Animator animator;
