@@ -21,14 +21,14 @@ public class Player : MonoBehaviour, IMove
 
 
     private Rigidbody2D rbPlayer;
-    private SpriteRenderer spritePlayer;
+    SpriteRenderer spritePlayer;
 
 
     private bool isLeft = false;
     private float velosity;
 
 
-    //Animator animator;
+    Animator animator;
 
     //ïîëó÷àåì ìàêñèìàëüíîå êîë-âî õï äëÿ health bar
     public void SetMaxHealth(float health)
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour, IMove
         player = this;
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -108,11 +108,12 @@ public class Player : MonoBehaviour, IMove
             }
             else
             {
-                //animator.SetTrigger("Desh");
+                
                 rbPlayer.AddForce(Vector2.right * dashForse / 2);
             }
         }
         timer = deshReload;
+        animator.SetTrigger("Desh");
 
     }
     //äâèæåíèå èãðîêà
@@ -140,10 +141,10 @@ public class Player : MonoBehaviour, IMove
         }
         if (velosity!=0)
         {
-           // animator.SetBool("IsRunning",true);
+            animator.SetBool("IsRun",true);
         }
-        //else
-           // animator.SetBool("IsRunning", false);
+        else
+            animator.SetBool("IsRun", false);
         
     }
 
@@ -195,7 +196,7 @@ public class Player : MonoBehaviour, IMove
             }
             if (timer <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift))
                     PlayerDash();
             }
             else
