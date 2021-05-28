@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DCollider
   - BotGround
+  - Help
   layers:
   - Default
   - TransparentFX

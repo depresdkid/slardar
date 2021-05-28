@@ -4,26 +4,49 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    System.Random random = new System.Random();
+
     public AudioSource audio;
+        
     Rigidbody2D rigidbody;    
     SpriteRenderer sprite;
-    GameObject _gameObject;
+    Transform player;
+
     public float speed;
     public int damage;
-    void End() {
-        Destroy(gameObject);
-    }
+
+    bool _isHit = false;
+    
     private void Awake()
     {
-        _gameObject = gameObject;
+        double rand = random.NextDouble();
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = transform.right * speed;
+        
         sprite = GetComponent<SpriteRenderer>();
+
+        rigidbody.velocity = transform.right * speed;
+        if (player.position.x < transform.position.x)
+        {
+            rigidbody.velocity = new Vector2(-speed, (float)rand);
+        }        
+        else
+            rigidbody.velocity = new Vector2(speed, (float)rand);
+        try
+        {
+            Invoke("End", 4f);
+        }
+        catch (System.Exception)
+        {
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !_isHit)
         {
+            _isHit = true;
             Player.player.GetDamage(damage);
             audio.Play();
             sprite.enabled = false;
@@ -31,8 +54,8 @@ public class Bullet : MonoBehaviour
             
         }
     }
-    void Update()
+    void End()
     {
-        
+        Destroy(gameObject);
     }
 }
