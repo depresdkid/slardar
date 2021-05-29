@@ -13,13 +13,14 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
     [SerializeField] private Slider sliderHealth;
+    [SerializeField] private AudioSource audioDesh;
 
     public static Player player;
     public bool isReady = true;
     public int doubleJump = 1;
     public float timer = 0;
 
-
+    
     private Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
 
@@ -83,36 +84,34 @@ public class Player : MonoBehaviour, IMove
         //îáíîâëÿåì âåêòîð ÷òîá íå ñêëàäûâàòü ñêîðîñòè
         // êñòàòè îí íå ðàáîòàåò :D (èëè ðàáîòàåò íî íå òàê êàê íàäî)
         rbPlayer.velocity = new Vector2(0, 0);
-
+        audioDesh.Play();
         //ïðîâåðêà äëÿ äåøà â ñòîÿ÷åì ñîñòîÿíèè è ïðè äâèæåíèè
         if (velosity == 0)
         {
             if (isLeft)
             {
-                //animator.SetTrigger("Desh");
                 rbPlayer.AddForce(Vector2.left * dashForse);
             }
             else
             {
-                //animator.SetTrigger("Desh");
                 rbPlayer.AddForce(Vector2.right * dashForse);
             }
 
             }
         else
         {
+
             if (isLeft)
             {
-                //animator.SetTrigger("Desh");
-                rbPlayer.AddForce(Vector2.left * dashForse / 2);
+                rbPlayer.AddForce(Vector2.left * dashForse / 1.3f);
             }
             else
             {
                 
-                rbPlayer.AddForce(Vector2.right * dashForse / 2);
+                rbPlayer.AddForce(Vector2.right * dashForse / 1.3f);
             }
         }
-        timer = deshReload;
+        timer = deshReload;        
         animator.SetTrigger("Desh");
 
     }
