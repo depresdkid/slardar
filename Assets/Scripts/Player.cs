@@ -177,7 +177,10 @@ public class Player : MonoBehaviour, IMove
     }
     private void Update()
     {
-        
+        if (transform.position.y<0)
+        {
+            health = 0;
+        }
         if (isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isReady)
