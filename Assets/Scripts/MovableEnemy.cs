@@ -32,6 +32,7 @@ public class MovableEnemy : Enemy,IMove
         //анимации
         if (isRun == false)
         {
+
             try
             {
                 try

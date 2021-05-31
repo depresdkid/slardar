@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8038569261278046027}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 617.894, y: 7.94, z: 0}
-  m_LocalScale: {x: 0.19852328, y: 0.1892002, z: 1}
+  m_LocalPosition: {x: 617.894, y: 9.39, z: 0}
+  m_LocalScale: {x: 0.1985233, y: 0.1892002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 072449b64a5f01047a9ffb701295a3f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0449792, y: -0.025345907}
+  m_Offset: {x: 0.020998448, y: -0.017947108}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8067379, y: 0.49753073}
+  m_Size: {x: 0.48699415, y: 0.37418574}
   m_EdgeRadius: 0
 --- !u!50 &3586634839110845306
 Rigidbody2D:
@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: -6901833274454631045}
-  speed: 0
-  damage: 0
+  speed: 3
+  damage: 2
 --- !u!82 &-6901833274454631045
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,22 +13,23 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
     [SerializeField] private Slider sliderHealth;
+    [SerializeField] private AudioSource audioDesh;
 
     public static Player player;
     public bool isReady = true;
     public int doubleJump = 1;
     public float timer = 0;
 
-
+    
     private Rigidbody2D rbPlayer;
-    private SpriteRenderer spritePlayer;
+    SpriteRenderer spritePlayer;
 
 
     private bool isLeft = false;
     private float velosity;
 
 
-    //Animator animator;
+    Animator animator;
 
     //ïîëó÷àåì ìàêñèìàëüíîå êîë-âî õï äëÿ health bar
     public void SetMaxHealth(float health)
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour, IMove
         player = this;
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -83,36 +84,35 @@ public class Player : MonoBehaviour, IMove
         //îáíîâëÿåì âåêòîð ÷òîá íå ñêëàäûâàòü ñêîðîñòè
         // êñòàòè îí íå ðàáîòàåò :D (èëè ðàáîòàåò íî íå òàê êàê íàäî)
         rbPlayer.velocity = new Vector2(0, 0);
-
+        audioDesh.Play();
         //ïðîâåðêà äëÿ äåøà â ñòîÿ÷åì ñîñòîÿíèè è ïðè äâèæåíèè
         if (velosity == 0)
         {
             if (isLeft)
             {
-                //animator.SetTrigger("Desh");
                 rbPlayer.AddForce(Vector2.left * dashForse);
             }
             else
             {
-                //animator.SetTrigger("Desh");
                 rbPlayer.AddForce(Vector2.right * dashForse);
             }
 
             }
         else
         {
+
             if (isLeft)
             {
-                //animator.SetTrigger("Desh");
-                rbPlayer.AddForce(Vector2.left * dashForse / 2);
+                rbPlayer.AddForce(Vector2.left * dashForse / 1.3f);
             }
             else
             {
-                //animator.SetTrigger("Desh");
-                rbPlayer.AddForce(Vector2.right * dashForse / 2);
+                
+                rbPlayer.AddForce(Vector2.right * dashForse / 1.3f);
             }
         }
-        timer = deshReload;
+        timer = deshReload;        
+        animator.SetTrigger("Desh");
 
     }
     //äâèæåíèå èãðîêà
@@ -140,10 +140,10 @@ public class Player : MonoBehaviour, IMove
         }
         if (velosity!=0)
         {
-           // animator.SetBool("IsRunning",true);
+            animator.SetBool("IsRun",true);
         }
-        //else
-           // animator.SetBool("IsRunning", false);
+        else
+            animator.SetBool("IsRun", false);
         
     }
 
@@ -177,7 +177,10 @@ public class Player : MonoBehaviour, IMove
     }
     private void Update()
     {
-        
+        if (transform.position.y<0)
+        {
+            health = 0;
+        }
         if (isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isReady)
@@ -195,7 +198,7 @@ public class Player : MonoBehaviour, IMove
             }
             if (timer <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift))
                     PlayerDash();
             }
             else
