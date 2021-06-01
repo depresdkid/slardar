@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IMove
     SpriteRenderer spritePlayer;
 
 
-    private bool isLeft = false;
+    private bool isLeft = false, isFly = false;
     private float velosity;
 
 
@@ -78,7 +78,13 @@ public class Player : MonoBehaviour, IMove
         animator = GetComponent<Animator>();
 
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != "Player")
+        {
+            isFly = false;
+        }
+    }
     //ðûâîê
     void PlayerDash() {
         //îáíîâëÿåì âåêòîð ÷òîá íå ñêëàäûâàòü ñêîðîñòè
@@ -149,7 +155,8 @@ public class Player : MonoBehaviour, IMove
 
     //ïðûæîê
     void PlayerJump() {
-
+        isFly = true;
+        animator.SetTrigger("Jump");
         rbPlayer.velocity = new Vector2(0, 0);
         rbPlayer.velocity = Vector2.up * jumpForse;
         
@@ -177,6 +184,11 @@ public class Player : MonoBehaviour, IMove
     }
     private void Update()
     {
+        print(isFly);
+        if (isFly == false)
+        {
+            animator.SetTrigger("IsFall");
+        }
         if (transform.position.y<0)
         {
             health = 0;
