@@ -12,39 +12,43 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private float dashForse = 3000f;
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private float deshReload;
+    [SerializeField] private float cooldownAttack;
     [SerializeField] private Slider sliderHealth;
     [SerializeField] private AudioSource audioDesh;
+    [SerializeField] GameObject attackHit;
 
     public static Player player;
     public bool isReady = true;
     public int doubleJump = 1;
     public float timer = 0;
+    public float attackTimer = 0;
 
-    
+
+
     private Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
 
 
-    private bool isLeft = false, isFly = false;
+    private bool isLeft = false, isFly = false, isAttacking = false;
     private float velosity;
 
 
     Animator animator;
 
-    //ïîëó÷àåì ìàêñèìàëüíîå êîë-âî õï äëÿ health bar
+
     public void SetMaxHealth(float health)
     {
         sliderHealth.maxValue = health;
         sliderHealth.value = health;
     }
 
-    //ïîëó÷àåì òåêóùåå êîë-âî õï äëÿ health bar
+
     public void SetHealth(float health)
     {
         sliderHealth.value = health;
     }
 
-    //ïåðñîíàæ æèâîé
+
     public bool isAlive {
         get {
             if (health > 0)
@@ -56,8 +60,7 @@ public class Player : MonoBehaviour, IMove
         }
     }
     public float Health {
-    //òâîÿ õóéíÿ ìàêñ ïîíÿòèÿ íå èìåþ ÷òî îíà äåëàåò
-    //íå åá¸ò ðåàëüíî B)
+
         get {
             return Mathf.Round(health);
         }
@@ -66,7 +69,6 @@ public class Player : MonoBehaviour, IMove
         }
     }
 
-    //ïîëó÷èòü óðîí
     public void GetDamage(int damage) {
         health -= damage;
     }
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour, IMove
         spritePlayer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -85,13 +88,12 @@ public class Player : MonoBehaviour, IMove
             isFly = false;
         }
     }
-    //ðûâîê
+
     void PlayerDash() {
-        //îáíîâëÿåì âåêòîð ÷òîá íå ñêëàäûâàòü ñêîðîñòè
-        // êñòàòè îí íå ðàáîòàåò :D (èëè ðàáîòàåò íî íå òàê êàê íàäî)
+
         rbPlayer.velocity = new Vector2(0, 0);
         audioDesh.Play();
-        //ïðîâåðêà äëÿ äåøà â ñòîÿ÷åì ñîñòîÿíèè è ïðè äâèæåíèè
+
         if (velosity == 0)
         {
             if (isLeft)
@@ -121,12 +123,12 @@ public class Player : MonoBehaviour, IMove
         animator.SetTrigger("Desh");
 
     }
-    //äâèæåíèå èãðîêà
+
     void PlayerMove()
     {
         velosity = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * velosity * speed * Time.deltaTime);
-        //ïîâîðîò ñïàðéòà 
+
         if (isLeft)
         {
             spritePlayer.flipX = false;
@@ -153,7 +155,7 @@ public class Player : MonoBehaviour, IMove
         
     }
 
-    //ïðûæîê
+
     void PlayerJump() {
         isFly = true;
         animator.SetTrigger("Jump");
@@ -161,27 +163,29 @@ public class Player : MonoBehaviour, IMove
         rbPlayer.velocity = Vector2.up * jumpForse;
         
     }
-    //ðåàëèçàöèÿ èíòåðôåéñà
+
     public void Moving()
     {
         PlayerMove();
         
     }
 
-    //îáíîâëÿåì ìàêñèìàëüíîå çíà÷åíèå äëÿ ñëàéäåðà healt bar âûçîâîì ìåòîäà
+
     private void Start()
     {
         SetMaxHealth(maxHealth);
+        attackHit.SetActive(false);
     }
     private void FixedUpdate()
     {
-        //åñëè ïåñíîíàæ óìåð îí íå äâèãàåòñÿ
+
         if (isAlive)
         {
             Moving();
         }
         
     }
+
     private void Update()
     {
         print(isFly);
@@ -217,11 +221,28 @@ public class Player : MonoBehaviour, IMove
             {
                 timer -= Time.deltaTime;
             }
+            //tyt ataka vot
+            if (attackTimer <= 0)
+            {
+                isAttacking = false;
+                if (Input.GetButtonDown("Fire1") && !isAttacking)
+                {
+                    attackHit.SetActive(true);
+                    isAttacking = true;
+                    animator.Play("Atack");
+                    attackTimer = cooldownAttack;
+                }
+            }
+            else
+            {
 
+                attackTimer -= Time.deltaTime;
+            }
+            
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
-        //îáíîâëÿåì òåêóùåå õï
+
         SetHealth(health);
     }
 
