@@ -25,6 +25,14 @@ public abstract class Enemy : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {        
+        if (collision.tag == "HitBlock" && _health>0)
+        {
+            animator.SetTrigger("GetDamage");
+            GetDamage(Player.player.damage);
+        }
+    }
     protected abstract void Attack();
     public virtual void Start()
     {
@@ -32,7 +40,10 @@ public abstract class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     protected void GetDamage(float damage) {
-        _health -= damage;
+        if (damage>0)
+        {
+            _health -= damage;
+        }        
     }
     private void Update()
     {

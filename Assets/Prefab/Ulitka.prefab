@@ -177,7 +177,7 @@ MonoBehaviour:
   _damage: 1
   _speed: 0.8
   _moveDistans: 5
-  _attackDistans: 2
+  _attackDistans: 3
   _heightAgr: 1
 --- !u!95 &5685160199890368334
 Animator:
