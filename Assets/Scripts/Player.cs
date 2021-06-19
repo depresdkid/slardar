@@ -14,9 +14,10 @@ public class Player : MonoBehaviour, IMove
     [SerializeField] private float deshReload;
     [SerializeField] private float cooldownAttack;
     [SerializeField] private Slider sliderHealth;
-    [SerializeField] private AudioSource audioDesh;
+    [SerializeField] private AudioSource audioDesh,attack;
     [SerializeField] GameObject attackHit;
 
+    public int damage;
     public static Player player;
     public bool isReady = true;
     public int doubleJump = 1;
@@ -188,7 +189,7 @@ public class Player : MonoBehaviour, IMove
 
     private void Update()
     {
-        print(isFly);
+
         if (isFly == false)
         {
             animator.SetTrigger("IsFall");
@@ -225,8 +226,11 @@ public class Player : MonoBehaviour, IMove
             if (attackTimer <= 0)
             {
                 isAttacking = false;
+                
                 if (Input.GetButtonDown("Fire1") && !isAttacking)
                 {
+                    Invoke("ColliderSetFalse",0.3f);
+                    attack.Play();
                     attackHit.SetActive(true);
                     isAttacking = true;
                     animator.Play("Atack");
@@ -235,15 +239,16 @@ public class Player : MonoBehaviour, IMove
             }
             else
             {
-
                 attackTimer -= Time.deltaTime;
             }
             
             UI.deshReload = (float)System.Math.Round(timer, 1);
             UI.playerHealth = System.Convert.ToInt32(Health);
         }
-
         SetHealth(health);
+    }
+    void ColliderSetFalse() {
+        attackHit.SetActive(false);
     }
 
 }

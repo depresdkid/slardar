@@ -6,7 +6,6 @@ public class RangeEnemy : MonoBehaviour
     public AudioSource audio;
     public GameObject bullet;
     public Transform bulletSpawner;
-
     public void AttackRange()
     {
         if (Player.player.isAlive)
