@@ -91,7 +91,6 @@ public class MovableEnemy : Enemy,IMove
     }
     private void FixedUpdate()
     {
-
         if (IsAlive && Player.player.isAlive)
         {
             Fliping();
