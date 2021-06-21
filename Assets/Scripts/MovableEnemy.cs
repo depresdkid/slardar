@@ -95,7 +95,7 @@ public class MovableEnemy : Enemy,IMove
         {
             Fliping();
             //передвижение и анимации
-            float distance = Vector2.Distance(transform.position, player.position);
+            float distance = Vector2.Distance(transform.position + new Vector3(0f,0f,0f), player.position);
             float enemyPosY = transform.position.y;
             float playerPosY = player.position.y;
             //Проверка на вхождение в дистанцию атаки

@@ -149,7 +149,7 @@ MonoBehaviour:
   _damage: 3
   _speed: 1.5
   _moveDistans: 6
-  _attackDistans: 0.6
+  _attackDistans: 0.75
   _heightAgr: 2
 --- !u!70 &3751757410424718116
 CapsuleCollider2D:
