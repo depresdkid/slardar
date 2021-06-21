@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478405686730864995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6779733, y: 1.6181511, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 893634246552720347}
@@ -226,14 +226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90803d6f78c041349abe32f45a727bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   maxHealth: 20
   health: 20
   jumpForse: 5.7
   dashForse: 3000
   moveVector: {x: 0, y: 0}
   deshReload: 2
-  cooldownAttack: 2
+  cooldownAttack: 0.5
   sliderHealth: {fileID: 0}
   audioDesh: {fileID: 8407207594654214281}
   attack: {fileID: 7691955164613160236}
@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 4491402552725639227}
   - component: {fileID: 4259262661755468714}
   - component: {fileID: 2826648212447684204}
+  - component: {fileID: 3941454194961869009}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Player
@@ -761,6 +762,14 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!81 &3941454194961869009
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334074744610501593}
+  m_Enabled: 1
 --- !u!1 &7745697288698972702
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +814,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015928984, y: -0.13725042}
+  m_Offset: {x: -0.012244344, y: -0.13725042}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -816,5 +825,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86904335, y: 0.9323695}
+  m_Size: {x: 1.2154076, y: 0.9323695}
   m_EdgeRadius: 0

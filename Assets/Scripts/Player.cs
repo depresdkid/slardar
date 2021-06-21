@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IMove
@@ -189,7 +191,10 @@ public class Player : MonoBehaviour, IMove
 
     private void Update()
     {
-
+        if (!isAlive)
+        {
+            SceneManager.LoadScene("FirstLvL");
+        }
         if (isFly == false)
         {
             animator.SetTrigger("IsFall");

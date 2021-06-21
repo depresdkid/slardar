@@ -12,7 +12,7 @@ public class MovableEnemy : Enemy,IMove
     float random;
     public override void Start()
     {
-        random = Random.Range(1, 10);
+        random = Random.Range(1, 7);
         SpriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
@@ -99,7 +99,7 @@ public class MovableEnemy : Enemy,IMove
             float enemyPosY = transform.position.y;
             float playerPosY = player.position.y;
             //Проверка на вхождение в дистанцию атаки
-            if (distance < _attackDistans)
+            if (distance < _attackDistans )
             {
                 //animator.SetTrigger("EndRunning");
                 animator.SetBool("IsRunning", false);
